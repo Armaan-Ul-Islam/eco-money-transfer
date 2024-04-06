@@ -9,8 +9,8 @@ import org.apache.catalina.startup.Tomcat;
 public class EcoMoneyTransferApplication {
     public static void main(String[] args) throws LifecycleException {
         Tomcat tomcat = new Tomcat();
+        tomcat.setPort(8090);
         tomcat.getConnector();
-        tomcat.setPort(8090); //todo: fix
 
         Context context = tomcat.addContext("", null);
         Wrapper servletWrapper = Tomcat.addServlet(context,"transactionServlet", new TransactionServlet());
