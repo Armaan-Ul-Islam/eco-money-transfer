@@ -13,14 +13,14 @@ public class TransactionService {
         return List.copyOf(transactions);
     }
 
-    public Optional<Transaction> getTransaction(Long id){
+    public Optional<Transaction> getTransaction(String id){
         return transactions
                 .stream()
                 .filter(transaction -> transaction.getId().equals(id))
                 .findFirst();
     }
 
-    private void postTransaction(Transaction transaction){
+    public void postTransaction(Transaction transaction){
         transactions.add(transaction);
     }
 
