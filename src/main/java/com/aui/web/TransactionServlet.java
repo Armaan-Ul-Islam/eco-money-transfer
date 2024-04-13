@@ -18,12 +18,12 @@ public class TransactionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json; charset=UTF-8");
-        if (req.getRequestURI().contains("/transactions")) {
+        if (req.getRequestURI().equalsIgnoreCase("/transactions")) {
             List<Transaction> transactions = transactionService.getAllTransactions();
             String transactionsAsString = objectMapper.writeValueAsString(transactions);
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.getWriter().write(transactionsAsString);
-        } else if (req.getRequestURI().contains("/transaction")) {
+        } else if (req.getRequestURI().equalsIgnoreCase("/transaction")) {
             String idParam = req.getParameter("id");
             transactionService.getTransaction(idParam).ifPresentOrElse(trx -> {
                         try {
@@ -43,6 +43,8 @@ public class TransactionServlet extends HttpServlet {
                         }
                     }
             );
+        } else {
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 
@@ -54,6 +56,8 @@ public class TransactionServlet extends HttpServlet {
             transactionService.postTransaction(trx);
             resp.setStatus(HttpServletResponse.SC_CREATED);
             resp.getWriter().write("Saved Successfully!");
+        } else {
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 }

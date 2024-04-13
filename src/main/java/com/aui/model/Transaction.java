@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
@@ -26,12 +25,11 @@ public final class Transaction {
     @JsonCreator
     public Transaction(
             @JsonProperty("amount") BigDecimal amount,
-            @JsonProperty("reference") String reference,
-            @JsonProperty("offsetDateTime") OffsetDateTime offsetDateTime) {
+            @JsonProperty("reference") String reference) {
         this.id = UUID.randomUUID().toString();
         this.amount = amount;
         this.reference = reference;
-        this.instant = offsetDateTime.toInstant();
+        this.instant = Instant.now();
     }
 
     public String getId() {
@@ -49,6 +47,6 @@ public final class Transaction {
     public String getInstant() {
         return instant
                 .atOffset(ZoneOffset.UTC)
-                .format(DateTimeFormatter.ISO_DATE_TIME);
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm'Z'"));
     }
 }
