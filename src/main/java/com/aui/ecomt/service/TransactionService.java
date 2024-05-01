@@ -1,6 +1,6 @@
-package com.aui.service;
+package com.aui.ecomt.service;
 
-import com.aui.model.Transaction;
+import com.aui.ecomt.model.Transaction;
 
 import java.util.List;
 import java.util.Optional;

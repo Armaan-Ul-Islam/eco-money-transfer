@@ -1,8 +1,8 @@
-package com.aui.web;
+package com.aui.ecomt.web;
 
-import com.aui.context.ApplicationContext;
-import com.aui.model.Transaction;
-import com.aui.service.TransactionService;
+import com.aui.ecomt.context.ApplicationContext;
+import com.aui.ecomt.model.Transaction;
+import com.aui.ecomt.service.TransactionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

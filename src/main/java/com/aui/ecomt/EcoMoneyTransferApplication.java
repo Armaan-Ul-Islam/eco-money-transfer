@@ -1,6 +1,6 @@
-package com.aui;
+package com.aui.ecomt;
 
-import com.aui.web.TransactionServlet;
+import com.aui.ecomt.web.TransactionServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Wrapper;
